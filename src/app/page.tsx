@@ -1,9 +1,10 @@
 import React from "react";
 import HeroSection from "@/components/HeroSection";
-import VideoConsult from "@/components/VideoConsult";
+import InvisibleConsult from "@/components/InvisibleConsult";
 import TreatmentSolutions from "@/components/TreatmentSolutions";
 import ProcessSequence from "@/components/ProcessSequence";
 import SpecialistBio from "@/components/SpecialistBio";
+import CarouselDisplayZone from "@/components/CarouselDisplayZone";
 import ComparisonMatrix from "@/components/ComparisonMatrix";
 import DigitalStorefront from "@/components/DigitalStorefront";
 import ReviewCarousel from "@/components/ReviewCarousel";
@@ -39,10 +40,11 @@ export default function Home() {
       {/* Main Content Sections */}
       <main className="w-full">
         <HeroSection />
-        <VideoConsult />
+        <InvisibleConsult />
         <TreatmentSolutions />
         <ProcessSequence />
         <SpecialistBio />
+        <CarouselDisplayZone />
         <ComparisonMatrix />
         <DigitalStorefront />
         <ReviewCarousel />

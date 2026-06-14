@@ -75,7 +75,7 @@ export default function LeadAcquisition() {
                     Ready to Reverse Your Cellular Clock?
                   </h2>
                   <p className="text-sm text-zinc-600 font-light leading-relaxed">
-                    Spaces for our advanced regenerative treatments are limited. Secure your personalized, in-depth skin or scalp analysis with our medical practitioners today.
+                    Spaces for our advanced regenerative treatments are limited. Secure your personalized, in-depth skin or scalp analysis with our medical practitioners today. You may also download our authoritative 14-page <a href="/Cell_Matrix_Clinical_Protocol_Guide.pdf" download className="underline font-normal text-zinc-900 hover:text-zinc-700 transition-colors">Clinical Protocol Guide (PDF)</a> detailing cell signaling pathways and nutrition guidelines.
                   </p>
                 </div>
 
