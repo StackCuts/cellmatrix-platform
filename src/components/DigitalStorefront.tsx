@@ -133,16 +133,16 @@ export default function DigitalStorefront() {
                 {/* Book title */}
                 <div className="space-y-3">
                   <h3 className="text-xl font-light tracking-tight leading-snug text-zinc-800">
-                    The Clean Slate Protocol
+                    The Molecular Matrix
                   </h3>
                   <p className="text-[9px] text-zinc-500 font-light leading-relaxed">
-                    The patient&apos;s essential guide to clinical exosome preparation.
+                    A clinical protocol guide to cellular dermal & follicular matrix regeneration.
                   </p>
                 </div>
 
                 {/* Book footer */}
                 <div className="flex justify-between items-center pt-4 border-t border-zinc-100">
-                  <span className="text-[8px] font-mono text-zinc-400">VOL. 01 / REV. B</span>
+                  <span className="text-[8px] font-mono text-zinc-400">VOL. 04 / REV. D</span>
                   <BookOpen className="w-3.5 h-3.5 text-zinc-400" />
                 </div>
               </motion.div>
@@ -157,11 +157,11 @@ export default function DigitalStorefront() {
                       Digital Blueprint (PDF)
                     </span>
                     <h3 className="text-xl md:text-2xl font-light text-white mt-3 leading-snug">
-                      The Clean Slate Protocol: The Patient’s Essential Pre & Post-Care Guide to Exosome Therapy
+                      The Molecular Matrix: A Clinical Protocol for Cellular Dermal & Follicular Regeneration
                     </h3>
                   </div>
                   <div className="text-right shrink-0">
-                    <p className="text-2xl font-semibold text-white">$29</p>
+                    <p className="text-2xl font-semibold text-white">$9</p>
                     <p className="text-xs text-zinc-500 uppercase">USD</p>
                   </div>
                 </div>

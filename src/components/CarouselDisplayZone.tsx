@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, Check, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ClinicalSpace {
@@ -11,8 +11,6 @@ interface ClinicalSpace {
   description: string;
   image: string;
   details: string[];
-  longDescription: string;
-  specs: Record<string, string>;
 }
 
 interface PatientOutcome {
@@ -31,42 +29,21 @@ const spaces: ClinicalSpace[] = [
     name: "ISO-Class 5 Clean Room",
     description: "Our sterile processing environment engineered for the ultra-purification of cellular exosomes.",
     image: "/assets/clean_room.webp",
-    details: ["99.99% particulate filtration", "Positive air pressure cascade", "Active HEPA containment"],
-    longDescription: "This clean room operates under continuous positive pressure with laminar flow filtration, designed specifically to isolate and process pure exosome signaling profiles. By removing 99.99% of airborne particulates down to 0.3 microns, the facility guarantees zero ambient contamination during reconstitution and quality control protocols.",
-    specs: {
-      "Classification": "ISO 14644-1 Class 5",
-      "Pressure Differential": "+15 Pascals",
-      "HEPA Filtration Rate": "99.997% at 0.3µm",
-      "Air Changes/Hour": "240 cycles/hr"
-    }
+    details: ["99.99% particulate filtration", "Positive air pressure cascade", "Active HEPA containment"]
   },
   {
     id: "space-2",
     name: "Dermal Treatment Suite 04",
     description: "Designed for luxury patient comfort and sterile clinical precision during exosome treatment applications.",
     image: "/assets/treatment_suite.webp",
-    details: ["Soft-ambient medical lighting", "Zero-gravity treatment chair", "Integrated skin telemetry screens"],
-    longDescription: "Suite 04 is engineered to deliver zero-gravity clinical placement while tracking patient telemetry in real-time. Ambient lighting controls reduce patient autonomic arousal, stabilizing heart rate and optimization of tissue perfusion parameters during active micro-channel topical applications.",
-    specs: {
-      "Telemetry Integration": "Lactate & SpO2 Continuous",
-      "Ergonomics": "Zero-Gravity Pneumatic Bed",
-      "Sanitization": "Dual UV-C Air Scrubber",
-      "Lighting Spectrum": "590nm Amber Ambient"
-    }
+    details: ["Soft-ambient medical lighting", "Zero-gravity treatment chair", "Integrated skin telemetry screens"]
   },
   {
     id: "space-3",
     name: "Exosome Extraction Laboratory",
     description: "Where advanced molecular separation occurs to isolate high-potency regenerative proteins.",
     image: "/assets/extraction_lab.webp",
-    details: ["Ultracentrifugation isolation", "Spectrometric quality control", "Cryopreservation at -80°C"],
-    longDescription: "The molecular biology core executes fractionation and purification steps via refrigerated ultracentrifugation and size-exclusion chromatography. The isolated exosomes undergo strict nanoparticle tracking analysis (NTA) to measure particle size distribution and concentration profiles before immediate cryo-preservation.",
-    specs: {
-      "Isolation Method": "Size-Exclusion Chromatography",
-      "NTA Validation": "Particle concentration & size",
-      "Cryopreservation": "Liquid Nitrogen Vapor (-180°C)",
-      "Centrifugation G-Force": "100,000 x g"
-    }
+    details: ["Ultracentrifugation isolation", "Spectrometric quality control", "Cryopreservation at -80°C"]
   }
 ];
 
@@ -114,27 +91,7 @@ const outcomes: PatientOutcome[] = [
 
 export default function CarouselDisplayZone() {
   const [activeTab, setActiveTab] = useState<"spaces" | "outcomes">("spaces");
-  const [selectedSpace, setSelectedSpace] = useState<ClinicalSpace | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    if (selectedSpace) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [selectedSpace]);
 
   const scroll = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
@@ -152,12 +109,6 @@ export default function CarouselDisplayZone() {
     initial: { opacity: 0, y: 15 },
     animate: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
     exit: { opacity: 0, y: -15, transition: { duration: 0.4, ease: "easeIn" as const } }
-  };
-
-  const modalVariants = {
-    initial: isMobile ? { y: "100%", opacity: 0.5 } : { scale: 0.95, opacity: 0 },
-    animate: { y: 0, scale: 1, opacity: 1, transition: { type: "spring" as const, damping: 30, stiffness: 300 } },
-    exit: isMobile ? { y: "100%", opacity: 0.5 } : { scale: 0.95, opacity: 0 }
   };
 
   return (
@@ -263,8 +214,7 @@ export default function CarouselDisplayZone() {
                   {spaces.map((space) => (
                     <div
                       key={space.id}
-                      onClick={() => setSelectedSpace(space)}
-                      className="flex-shrink-0 w-[290px] sm:w-[380px] md:w-[420px] bg-white border border-zinc-200/50 rounded-sm overflow-hidden snap-start shadow-sm hover:shadow-md transition-all duration-500 flex flex-col group cursor-pointer"
+                      className="flex-shrink-0 w-[290px] sm:w-[380px] md:w-[420px] bg-white border border-zinc-200/50 rounded-sm overflow-hidden snap-start shadow-sm hover:shadow-md transition-all duration-500 flex flex-col group"
                     >
                       {/* Image Frame */}
                       <div className="relative h-60 w-full overflow-hidden bg-zinc-900">
@@ -290,19 +240,13 @@ export default function CarouselDisplayZone() {
                         </div>
 
                         {/* Specs checklist */}
-                        <div className="pt-4 border-t border-zinc-100 space-y-2 flex-grow">
+                        <div className="pt-4 border-t border-zinc-100 space-y-2">
                           {space.details.map((detail, idx) => (
-                            <div key={idx} className="flex items-center gap-2 text-[10px] text-zinc-650 uppercase tracking-wider">
+                            <div key={idx} className="flex items-center gap-2 text-[10px] text-zinc-600 uppercase tracking-wider">
                               <Check className="h-3 w-3 text-zinc-400 stroke-[2.5]" />
                               <span>{detail}</span>
                             </div>
                           ))}
-                        </div>
-
-                        {/* Interactive signifier */}
-                        <div className="pt-4 border-t border-zinc-100 flex items-center justify-between text-[9px] font-semibold tracking-widest text-zinc-400 group-hover:text-zinc-900 transition-colors duration-300 uppercase">
-                          <span>View Specifications</span>
-                          <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">→</span>
                         </div>
                       </div>
                     </div>
@@ -394,122 +338,6 @@ export default function CarouselDisplayZone() {
 
         </div>
       </div>
-
-      {/* Immersive space details modal overlay */}
-      <AnimatePresence>
-        {selectedSpace && (
-          <div className="fixed inset-0 z-[100] flex items-end md:items-center justify-center">
-            {/* Backdrop with blur */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelectedSpace(null)}
-              className="absolute inset-0 bg-zinc-950/50 backdrop-blur-md"
-            />
-
-            {/* Modal Card container */}
-            <motion.div
-              variants={modalVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              className="relative bg-white border border-zinc-200 shadow-2xl w-full max-h-[90vh] md:max-h-[85vh] md:max-w-4xl rounded-t-2xl md:rounded-sm flex flex-col md:flex-row overflow-hidden z-10"
-            >
-              {/* Close Button floating over upper right */}
-              <button
-                onClick={() => setSelectedSpace(null)}
-                className="absolute top-4 right-4 z-[60] flex h-10 w-10 items-center justify-center rounded-full bg-black/45 backdrop-blur-md text-white hover:bg-black/60 transition-all cursor-pointer active:scale-95 shadow-lg border border-white/10"
-                aria-label="Close specifications panel"
-              >
-                <X className="h-5 w-5" />
-              </button>
-
-              {/* Mobile grab bar */}
-              <div className="md:hidden flex justify-center py-2.5 bg-zinc-50 border-b border-zinc-100 flex-shrink-0">
-                <div className="w-12 h-1 bg-zinc-300 rounded-full" />
-              </div>
-
-              {/* Left Side: High-res space graphic frame */}
-              <div className="relative h-48 sm:h-64 md:h-auto md:w-5/12 bg-zinc-900 flex-shrink-0">
-                <Image
-                  src={selectedSpace.image}
-                  alt={selectedSpace.name}
-                  fill
-                  sizes="(max-w-768px) 100vw, 400px"
-                  className="object-cover"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                
-                {/* Embedded tag */}
-                <div className="absolute bottom-4 left-4 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-sm border border-white/20 text-[9px] font-semibold text-white tracking-widest uppercase">
-                  Cell Matrix Protocol Room
-                </div>
-              </div>
-
-              {/* Right Side: Scrollable specifications panel */}
-              <div className="p-6 sm:p-8 md:p-10 flex-grow flex flex-col justify-between overflow-y-auto md:w-7/12 space-y-6">
-                
-                {/* Header info */}
-                <div className="space-y-4">
-                  <div className="space-y-1">
-                    <span className="text-[10px] font-semibold tracking-widest text-zinc-400 uppercase block">
-                      Explore Infrastructure
-                    </span>
-                    <h3 className="font-serif text-2xl sm:text-3xl font-light text-zinc-900">
-                      {selectedSpace.name}
-                    </h3>
-                  </div>
-                  
-                  <p className="text-sm text-zinc-600 font-light leading-relaxed font-sans">
-                    {selectedSpace.longDescription}
-                  </p>
-                </div>
-
-                {/* Specs Section */}
-                <div className="space-y-4 pt-6 border-t border-zinc-150">
-                  <h4 className="text-xs font-semibold text-zinc-400 uppercase tracking-widest font-sans">
-                    Technical Specifications
-                  </h4>
-                  
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {Object.entries(selectedSpace.specs).map(([key, val]) => (
-                      <div key={key} className="space-y-1 bg-zinc-50 border border-zinc-150/40 p-3 rounded-sm">
-                        <span className="block text-[9px] text-zinc-400 uppercase font-mono tracking-wider">
-                          {key}
-                        </span>
-                        <span className="block text-xs text-zinc-800 font-medium font-sans">
-                          {val}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Closing CTA and back button */}
-                <div className="pt-6 border-t border-zinc-150 flex flex-col sm:flex-row items-center gap-4">
-                  <a
-                    href="#lead-section"
-                    onClick={() => setSelectedSpace(null)}
-                    className="w-full sm:w-auto inline-flex h-11 items-center justify-center rounded-sm bg-zinc-900 px-6 text-xs font-semibold tracking-wider text-white hover:bg-zinc-800 transition-all uppercase"
-                  >
-                    Request Facility Assessment
-                  </a>
-                  
-                  <button
-                    onClick={() => setSelectedSpace(null)}
-                    className="w-full sm:w-auto inline-flex h-11 items-center justify-center rounded-sm border border-zinc-200 bg-white px-6 text-xs font-semibold tracking-wider text-zinc-600 hover:text-zinc-900 hover:bg-zinc-50 transition-all uppercase cursor-pointer"
-                  >
-                    Back to Overview
-                  </button>
-                </div>
-
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }

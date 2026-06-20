@@ -19,36 +19,48 @@ const phases: ConsultPhase[] = [
     phase: "PHASE 01",
     title: "Deep Cellular Mapping",
     timeline: "Baseline Assessment",
-    description: "Using advanced bio-telemetry sensors, we analyze your dermal or follicular density, locating specific cellular depletion zones that require activation.",
+    description: "Using high-resolution bio-telemetry scanning, we map your dermal elasticity or follicular density at a micron level, pinpointing specific cellular depletion zones.",
     image: "/assets/consult_1.webp",
     points: [
-      "High-resolution scalp & skin scan",
-      "Identification of collagen depletion sites",
-      "Custom exosome dosage calculation"
+      "Micron-level skin & scalp scanning",
+      "Mapping of collagen and follicle depletion",
+      "Targeted molecular dosage calculation"
     ]
   },
   {
     phase: "PHASE 02",
     title: "Matrix Infusion",
     timeline: "Treatment Application",
-    description: "Billions of ultra-pure exosome vesicles are introduced directly into the activated dermal matrix using microscopic channels, setting off immediate cell signaling.",
+    description: "Billions of clinical-grade exosome signaling vesicles are introduced directly into the target skin or scalp matrix through microscopic channels, initiating rapid cell-to-cell communication.",
     image: "/assets/consult_2.webp",
     points: [
-      "Painless micro-channel activation",
-      "Topical delivery of 10B+ pure exosome vesicles",
-      "Immediate absorption into deep tissue layers"
+      "Painless micro-channel dermal access",
+      "Delivery of 10B+ pure exosome signaling units",
+      "Immediate absorption into deep target layers"
     ]
   },
   {
     phase: "PHASE 03",
     title: "Neo-Synthesis Activation",
-    timeline: "Tissue Remodeling",
-    description: "The exosome vesicles fuse with target cells, executing a biological software update that boosts collagen and hair matrix protein synthesis over the following weeks.",
+    timeline: "Tissue Rebuilding",
+    description: "The exosome vesicles bind and transfer molecular payloads into fibroblasts or follicle papilla cells, executing a biological update that drives collagen synthesis and root reactivation.",
     image: "/assets/consult_3.webp",
     points: [
-      "Up to 690% increased collagen synthesis",
-      "Continuous cellular repair and remodeling",
-      "Natural-looking structural restoration"
+      "Up to 690% increased cellular synthesis",
+      "Reactivation of dormant hair follicle bulbs",
+      "Visible skin smoothing and hair densification"
+    ]
+  },
+  {
+    phase: "PHASE 04",
+    title: "Consolidated Matrix Maintenance",
+    timeline: "Long-Term Stabilization",
+    description: "As newly formed structural proteins undergo cross-linking and maturation, the dermal support grids stabilize, and hair follicle cycles consolidate for long-term density.",
+    image: "/assets/treatment_suite.webp",
+    points: [
+      "Advanced collagen cross-linking",
+      "Stabilization of active follicle growth cycles",
+      "Periodic cellular health monitoring checkups"
     ]
   }
 ];
@@ -95,7 +107,7 @@ export default function InvisibleConsult() {
               </span>
             </h2>
             <p className="font-sans max-w-xl mx-auto text-sm sm:text-base text-zinc-600 font-light leading-relaxed">
-              Step inside our step-by-step biological methodology for cellular tissue restoration and anti-aging recovery, or download our complete <a href="/Cell_Matrix_Clinical_Protocol_Guide.pdf" download className="underline font-normal text-zinc-900 hover:text-zinc-700 transition-colors">Clinical Protocol Guide (PDF)</a>.
+              Step inside our step-by-step biological methodology for cellular tissue restoration, and trace how we map, infuse, and rebuild your skin or hair matrix at a cellular level.
             </p>
           </div>
 
