@@ -16,7 +16,12 @@ export default function Home() {
     <div className="w-full min-h-screen bg-white text-zinc-950 font-sans selection:bg-zinc-200">
       {/* Editorial Navigation Header */}
       <header className="w-full border-b border-zinc-100 py-6 px-6 lg:px-16 flex items-center justify-between md:grid md:grid-cols-3 bg-white/80 backdrop-blur-md sticky top-0 z-50">
-        <div className="flex items-center justify-start">
+        <div className="flex items-center justify-start gap-3.5">
+          <svg viewBox="0 0 100 100" className="h-7 w-7 text-zinc-950 stroke-current fill-none stroke-[6]">
+            <circle cx="50" cy="50" r="40" strokeDasharray="16 8" className="text-zinc-300" />
+            <circle cx="50" cy="50" r="20" className="text-zinc-950" />
+            <circle cx="50" cy="50" r="6" className="fill-zinc-950 stroke-none" />
+          </svg>
           <span className="text-sm font-semibold tracking-[0.25em] uppercase text-zinc-900">
             Cell Matrix Labs
           </span>

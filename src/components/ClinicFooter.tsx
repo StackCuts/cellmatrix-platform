@@ -7,9 +7,16 @@ export default function ClinicFooter() {
         
         {/* Clinic Branding */}
         <div className="space-y-4">
-          <h3 className="font-serif text-lg font-bold tracking-wider uppercase text-charcoal">
-            Cell Matrix Labs
-          </h3>
+          <div className="flex items-center gap-3">
+            <svg viewBox="0 0 100 100" className="h-8 w-8 text-charcoal stroke-current fill-none stroke-[6]">
+              <circle cx="50" cy="50" r="40" strokeDasharray="16 8" className="text-charcoal/30" />
+              <circle cx="50" cy="50" r="20" className="text-charcoal" />
+              <circle cx="50" cy="50" r="6" className="fill-charcoal stroke-none" />
+            </svg>
+            <h3 className="font-serif text-lg font-bold tracking-wider uppercase text-charcoal">
+              Cell Matrix Labs
+            </h3>
+          </div>
           <p className="text-sm text-charcoal/80 leading-relaxed max-w-sm">
             Pioneering biological excellence through high-fidelity exosome treatments and cellular rejuvenation.
           </p>
