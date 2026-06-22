@@ -26,13 +26,14 @@ export default function DigitalStorefront() {
     "Anti-inflammatory Dietary Guidelines",
   ];
 
+  const checkoutUrl = process.env.NEXT_PUBLIC_LEMON_SQUEEZY_CHECKOUT_URL || "https://cellmatrix.lemonsqueezy.com/buy/f2e5eb98-7578-43bb-a53b-fde5ee5a1a15?embed=1";
+
   const handleCheckout = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
     e.preventDefault();
-    const sandboxCheckoutUrl = "https://cellmatrix.lemonsqueezy.com/buy/f2e5eb98-7578-43bb-a53b-fde5ee5a1a15?embed=1";
     if (typeof window !== "undefined" && window.LemonSqueezy?.Url) {
-      window.LemonSqueezy.Url.Open(sandboxCheckoutUrl);
+      window.LemonSqueezy.Url.Open(checkoutUrl);
     } else {
-      window.open(sandboxCheckoutUrl, "_blank");
+      window.open(checkoutUrl, "_blank");
     }
   };
 
@@ -196,7 +197,7 @@ export default function DigitalStorefront() {
                   Secured payment processed via Lemon Squeezy. Access link delivered instantly to your inbox.
                 </p>
                 <motion.a
-                  href="https://cellmatrix.lemonsqueezy.com/buy/f2e5eb98-7578-43bb-a53b-fde5ee5a1a15?embed=1"
+                  href={checkoutUrl}
                   className="lemon-squeezy-button inline-flex h-12 items-center justify-center gap-2 rounded-sm bg-white px-6 text-sm font-medium text-zinc-950 transition-colors duration-300 hover:bg-zinc-100 tracking-wider uppercase whitespace-nowrap cursor-pointer"
                   onClick={handleCheckout}
                   whileHover={{ scale: 1.02 }}
